@@ -29,9 +29,9 @@
 
 4. Запустить автотесты используя зеленый треугольник в IDEA либо через команду в терминале:
        
-      MySQL:`gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"`
+      MySQL:`gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/app`
 
-      PostgreSQL: `gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app`
+      PostgreSQL: `gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app`
 
 5. Остановить контейнеры через команду в терминале:
 
@@ -39,3 +39,6 @@
 
       PostgreSQL: `docker-compose -f docker-compose-postgresql.yml down`
 
+## Создание отчетов в Allure
+
+Для формирования отчета и открытия в браузере использовать команду `gradlew allureServe`

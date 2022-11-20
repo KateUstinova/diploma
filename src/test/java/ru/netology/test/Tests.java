@@ -9,7 +9,7 @@ import ru.netology.data.DataHelp;
 import ru.netology.page.CardPage;
 import static com.codeborne.selenide.Selenide.open;
 
-public class Equivalent {
+public class Tests {
 
     @BeforeAll
     static void setUpAll() {
@@ -24,8 +24,8 @@ public class Equivalent {
     public void shouldFillFormWithApprovedCardForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedField();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedField();
+        CardPage.fullField(card);
         CardPage.successfulWay();
     }
 
@@ -33,8 +33,8 @@ public class Equivalent {
     public void shouldFillFormWithApprovedCardForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedField();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedField();
+        CardPage.fullField(card);
         CardPage.successfulWay();
     }
 
@@ -42,8 +42,8 @@ public class Equivalent {
     public void shouldFillFormWithDeclinedCardForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.declinedField();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.declinedField();
+        CardPage.fullField(card);
         CardPage.unSuccessfulWay();
     }
 
@@ -51,26 +51,8 @@ public class Equivalent {
     public void shouldFillFormWithDeclinedFieldForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.declinedField();
-        CardPage.fullField(cardInfo);
-        CardPage.unSuccessfulWay();
-    }
-
-    @Test
-    public void shouldFillFormWithRandomCardForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        CardPage.payToButton();
-        var cardInfo = DataHelp.randomField();
-        CardPage.fullField(cardInfo);
-        CardPage.unSuccessfulWay();
-    }
-
-    @Test
-    public void shouldFillFormWithRandomFieldForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.randomField();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.declinedField();
+        CardPage.fullField(card);
         CardPage.unSuccessfulWay();
     }
 
@@ -78,8 +60,8 @@ public class Equivalent {
     public void shouldFillFormWithNextMonthForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndNextMonth();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndNextMonth();
+        CardPage.fullField(card);
         CardPage.successfulWay();
     }
 
@@ -87,8 +69,8 @@ public class Equivalent {
     public void shouldFillFormWithNextMonthForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndNextMonth();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndNextMonth();
+        CardPage.fullField(card);
         CardPage.successfulWay();
     }
 
@@ -96,8 +78,8 @@ public class Equivalent {
     public void shouldFillFormWithPastMonthForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndPastMonth();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndPastMonth();
+        CardPage.fullField(card);
         CardPage.monthError();
     }
 
@@ -105,8 +87,8 @@ public class Equivalent {
     public void shouldFillFormWithPastMonthForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndPastMonth();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndPastMonth();
+        CardPage.fullField(card);
         CardPage.monthError();
     }
 
@@ -114,8 +96,8 @@ public class Equivalent {
     public void shouldFillFormWithNextYearForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndNextYear();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndNextYear();
+        CardPage.fullField(card);
         CardPage.successfulWay();
     }
 
@@ -123,8 +105,8 @@ public class Equivalent {
     public void shouldFillFormWithNextYearForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndNextYear();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndNextYear();
+        CardPage.fullField(card);
         CardPage.successfulWay();
     }
 
@@ -132,8 +114,8 @@ public class Equivalent {
     public void shouldFillFormWithPastYearForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndPastYear();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndPastYear();
+        CardPage.fullField(card);
         CardPage.yearError();
     }
 
@@ -141,8 +123,8 @@ public class Equivalent {
     public void shouldFillFormWithPastYearForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndPastYear();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndPastYear();
+        CardPage.fullField(card);
         CardPage.yearError();
     }
 
@@ -150,8 +132,8 @@ public class Equivalent {
     public void shouldFillFormWithWrongCvcForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndWrongCvc();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndWrongCvc();
+        CardPage.fullField(card);
         CardPage.cvcError();
     }
 
@@ -159,8 +141,8 @@ public class Equivalent {
     public void shouldFillFormWithWrongCvcForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndWrongCvc();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndWrongCvc();
+        CardPage.fullField(card);
         CardPage.cvcError();
     }
 
@@ -168,8 +150,8 @@ public class Equivalent {
     public void shouldFillFormWithZeroMonthForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndZeroMonth();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndZeroMonth();
+        CardPage.fullField(card);
         CardPage.monthError();
     }
 
@@ -177,26 +159,8 @@ public class Equivalent {
     public void shouldFillFormWithZeroMonthForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndZeroMonth();
-        CardPage.fullField(cardInfo);
-        CardPage.monthError();
-    }
-
-    @Test
-    public void shouldFillFormWithThirteenthMonthForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndThirteenthMonth();
-        CardPage.fullField(cardInfo);
-        CardPage.monthError();
-    }
-
-    @Test
-    public void shouldFillFormWithThirteenthMonthForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndThirteenthMonth();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndZeroMonth();
+        CardPage.fullField(card);
         CardPage.monthError();
     }
 
@@ -204,8 +168,8 @@ public class Equivalent {
     public void shouldFillFormWithZeroCvcForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndZeroCvc();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndZeroCvc();
+        CardPage.fullField(card);
         CardPage.cvcError();
     }
 
@@ -213,8 +177,8 @@ public class Equivalent {
     public void shouldFillFormWithZeroCvcForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndZeroCvc();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndZeroCvc();
+        CardPage.fullField(card);
         CardPage.cvcError();
     }
 
@@ -222,8 +186,8 @@ public class Equivalent {
     public void shouldFillFormWithShortCardForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.shortCard();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.shortCard();
+        CardPage.fullField(card);
         CardPage.cardNumberError();
     }
 
@@ -231,8 +195,8 @@ public class Equivalent {
     public void shouldFillFormWithShortCardForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.shortCard();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.shortCard();
+        CardPage.fullField(card);
         CardPage.cardNumberError();
     }
 
@@ -240,8 +204,8 @@ public class Equivalent {
     public void shouldFillFormWithRussiaNameForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndRussiaName();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndRussiaName();
+        CardPage.fullField(card);
         CardPage.ownerError();
     }
 
@@ -249,28 +213,121 @@ public class Equivalent {
     public void shouldFillFormWithRussiaNameForCredit() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndRussiaName();
-        CardPage.fullField(cardInfo);
+        var card = DataHelp.approvedFieldAndRussiaName();
+        CardPage.fullField(card);
+        CardPage.ownerError();
+    }
+
+//пустые значения
+    @Test
+    public void shouldFillFormWithEmptyCardForPayment() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payToButton();
+        var card = DataHelp.emptyCardField();
+        CardPage.fullField(card);
+        CardPage.cardNumberError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyMonthForPayment() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payToButton();
+        var card = DataHelp.emptyMonthField();
+        CardPage.fullField(card);
+        CardPage.monthError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyYearForPayment() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payToButton();
+        var card = DataHelp.emptyYearField();
+        CardPage.fullField(card);
+        CardPage.yearError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyOwnerForPayment() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payToButton();
+        var card = DataHelp.emptyOwnerField();
+        CardPage.fullField(card);
         CardPage.ownerError();
     }
 
     @Test
-    public void shouldFillFormWithMoreThanFiveYearForPayment() {
+    public void shouldFillFormWithEmptyCvcForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
         CardPage.payToButton();
-        var cardInfo = DataHelp.approvedFieldAndMoreThanFiveYear();
-        CardPage.fullField(cardInfo);
-        CardPage.successfulWay();
+        var card = DataHelp.emptyCvcField();
+        CardPage.fullField(card);
+        CardPage.cvcError();
     }
 
     @Test
-    public void shouldFillFormWithMoreThanFiveYearForCredit() {
+    public void shouldFillFormWithEmptyFieldsForPayment() {
         var url = open("http://localhost:8080", CardPage.class);
-        CardPage.payInCreditToButton();
-        var cardInfo = DataHelp.approvedFieldAndMoreThanFiveYear();
-        CardPage.fullField(cardInfo);
-        CardPage.successfulWay();
+        CardPage.payToButton();
+        var card = DataHelp.emptyFields();
+        CardPage.fullField(card);
+        CardPage.cardNumberError();
     }
 
+    @Test
+    public void shouldFillFormWithEmptyCardForCredit() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payInCreditToButton();
+        var card = DataHelp.emptyCardField();
+        CardPage.fullField(card);
+        CardPage.cardNumberError();
+    }
 
+    @Test
+    public void shouldFillFormWithEmptyMonthForCredit() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payInCreditToButton();
+        var card = DataHelp.emptyMonthField();
+        CardPage.fullField(card);
+        CardPage.monthError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyYearForCredit() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payInCreditToButton();
+        var card = DataHelp.emptyYearField();
+        CardPage.fullField(card);
+        CardPage.yearError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyOwnerForCredit() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payInCreditToButton();
+        var card = DataHelp.emptyOwnerField();
+        CardPage.fullField(card);
+        CardPage.ownerError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyCvcForCredit() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payInCreditToButton();
+        var card = DataHelp.emptyCvcField();
+        CardPage.fullField(card);
+        CardPage.cvcError();
+    }
+
+    @Test
+    public void shouldFillFormWithEmptyFieldsForCredit() {
+        var url = open("http://localhost:8080", CardPage.class);
+        CardPage.payInCreditToButton();
+        var card = DataHelp.emptyFields();
+        CardPage.fullField(card);
+        CardPage.cardNumberError();
+        CardPage.monthError();
+        CardPage.yearError();
+        CardPage.ownerError();
+        CardPage.cvcError();
+    }
 }

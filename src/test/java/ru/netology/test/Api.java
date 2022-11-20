@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class RestApi {
+public class Api {
 
     @BeforeAll
     static void setUpAll() {
@@ -27,7 +27,7 @@ public class RestApi {
                 "    \"number\": \"4444 4444 4444 4441\",\n" +
                 "    \"month\": \"10\",\n" +
                 "    \"year\": \"25\",\n" +
-                "    \"holder\": \"Ekatirina Ustinova\",\n" +
+                "    \"holder\": \"Ekaterina Ustinova\",\n" +
                 "    \"cvc\": \"365\"\n" +
                 "}";
 
@@ -47,7 +47,7 @@ public class RestApi {
                 "    \"number\": \"4444 4444 4444 4442\",\n" +
                 "    \"month\": \"10\",\n" +
                 "    \"year\": \"25\",\n" +
-                "    \"holder\": \"Ekatirina Ustinova\",\n" +
+                "    \"holder\": \"Ekaterina Ustinova\",\n" +
                 "    \"cvc\": \"365\"\n" +
                 "}";
 
@@ -67,7 +67,7 @@ public class RestApi {
                 "    \"number\": \"2315 4610 4270 1254\",\n" +
                 "    \"month\": \"10\",\n" +
                 "    \"year\": \"25\",\n" +
-                "    \"holder\": \"Ekatirina Ustinova\",\n" +
+                "    \"holder\": \"Ekaterina Ustinova\",\n" +
                 "    \"cvc\": \"365\"\n" +
                 "}";
 

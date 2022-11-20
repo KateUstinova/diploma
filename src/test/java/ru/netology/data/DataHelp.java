@@ -116,6 +116,7 @@ public class DataHelp {
     }
 
     public static String randomCardNumber() {
+
         return Long.toString(faker.number().randomNumber(16, true));
     }
 
@@ -152,14 +153,17 @@ public class DataHelp {
     }
 
     public static card emptyCardField() {
+
         return new card("", currentMonth(), currentYear(), owner(), CVC());
     }
 
     public static card emptyMonthField() {
+
         return new card(cardNumberApproved(), "", currentYear(), owner(), CVC());
     }
 
     public static card emptyYearField() {
+
         return new card(cardNumberApproved(), currentMonth(), "", owner(), CVC());
     }
 

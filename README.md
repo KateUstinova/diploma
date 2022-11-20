@@ -2,7 +2,7 @@
 
 ## Начало работы
 
-Клонировать репозиторий `git clone https://github.com/KateUstinova/diploma.git`
+Клонировать репозиторий `git clone https://github.com/KateUstinova/ndiploma.git`
 
 
 ## Описание процедуры запуска автотестов:

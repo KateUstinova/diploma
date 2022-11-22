@@ -27,6 +27,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'com.codeborne:selenide:6.9.0'
     testImplementation 'mysql:mysql-connector-java:8.0.30'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
     testImplementation 'io.rest-assured:rest-assured:5.2.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.20.0'

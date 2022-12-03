@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:5.2.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.20.0'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.9.0'
 }
 
 test {

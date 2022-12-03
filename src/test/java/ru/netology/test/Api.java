@@ -5,6 +5,9 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import ru.netology.data.ApiHelp;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -20,20 +23,17 @@ public class Api {
         SelenideLogger.removeListener("allure");
     }
 
+    @Mock
+    ApiHelp apiHelp;
+
 
     @Test
     public void shouldBeRestForApprovedCard() {
-        String request = "{\n" +
-                "    \"number\": \"4444 4444 4444 4441\",\n" +
-                "    \"month\": \"10\",\n" +
-                "    \"year\": \"25\",\n" +
-                "    \"holder\": \"Ekaterina Ustinova\",\n" +
-                "    \"cvc\": \"365\"\n" +
-                "}";
+        String cardInfoJson = apiHelp.createCardInfoJson("4444 4444 4444 4441");
 
         given().
                 header("Content-Type", "application/json").
-                body(request).
+                body(cardInfoJson).
                 when().
                 post("http://localhost:8080/api/v1/credit").
                 then().
@@ -43,17 +43,11 @@ public class Api {
 
     @Test
     public void shouldBeRestForDeclinedCard() {
-        String request = "{\n" +
-                "    \"number\": \"4444 4444 4444 4442\",\n" +
-                "    \"month\": \"10\",\n" +
-                "    \"year\": \"25\",\n" +
-                "    \"holder\": \"Ekaterina Ustinova\",\n" +
-                "    \"cvc\": \"365\"\n" +
-                "}";
+        String cardInfoJson = apiHelp.createCardInfoJson("4444 4444 4444 4442");
 
         given().
                 header("Content-Type", "application/json").
-                body(request).
+                body(cardInfoJson).
                 when().
                 post("http://localhost:8080/api/v1/credit").
                 then().
@@ -63,17 +57,10 @@ public class Api {
 
     @Test
     public void shouldBeNotRestForRandomCard() {
-        String request = "{\n" +
-                "    \"number\": \"2315 4610 4270 1254\",\n" +
-                "    \"month\": \"10\",\n" +
-                "    \"year\": \"25\",\n" +
-                "    \"holder\": \"Ekaterina Ustinova\",\n" +
-                "    \"cvc\": \"365\"\n" +
-                "}";
-
+        String cardInfoJson = apiHelp.createCardInfoJson("2315 4610 4270 1254");
         given().
                 header("Content-Type", "application/json").
-                body(request).
+                body(cardInfoJson).
                 when().
                 post("http://localhost:8080/api/v1/credit").
                 then().
@@ -83,17 +70,11 @@ public class Api {
 
     @Test
     public void shouldBeNotRestForEmptyCard() {
-        String request = "{\n" +
-                "    \"number\": \"\",\n" +
-                "    \"month\": \"\",\n" +
-                "    \"year\": \"\",\n" +
-                "    \"holder\": \"\",\n" +
-                "    \"cvc\": \"\"\n" +
-                "}";
+        String emptyCardInfoJson = apiHelp.getEmptyCardInfoJson();
 
         given().
                 header("Content-Type", "application/json").
-                body(request).
+                body(emptyCardInfoJson).
                 when().
                 post("http://localhost:8080/api/v1/credit").
                 then().

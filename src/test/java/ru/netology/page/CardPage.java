@@ -33,7 +33,7 @@ public class CardPage {
     private static SelenideElement emptyCVCField = $(byText("Неверный формат"));
 
 
-    public void fullField(DataHelp.card info) {
+    public void fullField(DataHelp.Card info) {
         numberOfCard.setValue(info.getCardNumber());
         month.setValue(info.getMonth());
         year.setValue(info.getYear());
@@ -43,7 +43,7 @@ public class CardPage {
     }
 
     public void successfulWay() {
-        sucNote.shouldBe(Condition.visible, Duration.ofSeconds(20));
+        sucNote.shouldBe(Condition.visible, Duration.ofSeconds(60));
     }
 
     public void unSuccessfulWay() {

@@ -29,7 +29,6 @@ public class DataHelp {
     public static String cardNumberDeclined() {
         return "4444444444444442";
     }
-
     public static String randomMonth() {
         Random random = new Random();
         int i = random.nextInt(10);
@@ -178,9 +177,6 @@ public class DataHelp {
         return new Card(cardNumberApproved(), zeroMonth(), nextYear(), owner(), CVC());
     }
 
-    public static Card approvedFieldAndThirteenthMonth() {
-        return new Card(cardNumberApproved(), thirteenthMonth(), currentYear(), owner(), CVC());
-    }
 
     public static Card approvedFieldAndZeroCvc() {
         return new Card(cardNumberApproved(), currentMonth(), currentYear(), owner(), "000");
@@ -193,10 +189,5 @@ public class DataHelp {
     public static Card approvedFieldAndRussiaName() {
         return new Card(cardNumberApproved(), currentMonth(), currentYear(), "Екатерина Устинова", CVC());
     }
-
-    public static Card approvedFieldAndMoreThanFiveYear() {
-        return new Card(cardNumberApproved(), currentMonth(), moreThenFiveYear(), owner(), CVC());
-    }
-
 }
 

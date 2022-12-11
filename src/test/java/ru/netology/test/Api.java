@@ -2,14 +2,16 @@ package ru.netology.test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import lombok.val;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import ru.netology.data.ApiHelp;
+import ru.netology.data.DataHelp;
+import ru.netology.data.SqlHelp;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class Api {
@@ -23,62 +25,31 @@ public class Api {
         SelenideLogger.removeListener("allure");
     }
 
-    @Mock
-    ApiHelp apiHelp;
-
-
     @Test
     public void shouldBeRestForApprovedCard() {
-        String cardInfoJson = apiHelp.createCardInfoJson("4444 4444 4444 4441");
-
-        given().
-                header("Content-Type", "application/json").
-                body(cardInfoJson).
-                when().
-                post("http://localhost:8080/api/v1/credit").
-                then().
-                statusCode(200).
-                body("status", equalTo("APPROVED"));
+        val approvedCardForPayment = DataHelp.approvedField();
+        final String response = ApiHelp.fillPaymentCard(approvedCardForPayment);
+        assertTrue(response.contains("APPROVED"), "Is true when status is approved");
     }
-
     @Test
     public void shouldBeRestForDeclinedCard() {
-        String cardInfoJson = apiHelp.createCardInfoJson("4444 4444 4444 4442");
-
-        given().
-                header("Content-Type", "application/json").
-                body(cardInfoJson).
-                when().
-                post("http://localhost:8080/api/v1/credit").
-                then().
-                statusCode(200).
-                body("status", equalTo("DECLINED"));
+        val declinedCardForPayment = DataHelp.declinedField();
+        final String response = ApiHelp.fillPaymentCard(declinedCardForPayment);
+        assertTrue(response.contains("DECLINED"), "Is true when status is declined");
     }
 
     @Test
     public void shouldBeNotRestForRandomCard() {
-        String cardInfoJson = apiHelp.createCardInfoJson("2315 4610 4270 1254");
-        given().
-                header("Content-Type", "application/json").
-                body(cardInfoJson).
-                when().
-                post("http://localhost:8080/api/v1/credit").
-                then().
-                statusCode(500).
-                body("message", equalTo("400 Bad Request"));
+        val randomCardForPayment = DataHelp.randomField();
+        final String response = ApiHelp.fillPaymentCard(randomCardForPayment);
+        assertTrue(response.contains("400 Bad Request"), "Is true when status is 400 Bad Request");
     }
 
     @Test
     public void shouldBeNotRestForEmptyCard() {
-        String emptyCardInfoJson = apiHelp.getEmptyCardInfoJson();
-
-        given().
-                header("Content-Type", "application/json").
-                body(emptyCardInfoJson).
-                when().
-                post("http://localhost:8080/api/v1/credit").
-                then().
-                statusCode(500).
-                body("message", equalTo("400 Bad Request"));
+        val emptyCardForPayment = DataHelp.emptyCardField();
+        final String response = ApiHelp.fillPaymentCard(emptyCardForPayment);
+        assertTrue(response.contains("400 Bad Request"), "Is true when status is 400 Bad Request");
     }
+
 }

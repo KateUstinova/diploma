@@ -35,8 +35,8 @@ public class DataHelp {
     public static String randomMonth() {
         Random random = new Random();
         int i = random.nextInt(10);
-        LocalDate DataMonth = LocalDate.now().plusMonths(i);
-        int month = DataMonth.getMonthValue();
+        LocalDate dataMonth = LocalDate.now().plusMonths(i);
+        int month = dataMonth.getMonthValue();
         return String.format("%02d", month);
     }
 
@@ -74,8 +74,8 @@ public class DataHelp {
     public static String randomYear() {
         Random random = new Random();
         int i = random.nextInt(10);
-        LocalDate DataYear = LocalDate.now().plusYears(i);
-        int year = DataYear.getYear() - 2000;
+        LocalDate dataYear = LocalDate.now().plusYears(i);
+        int year = dataYear.getYear() - 2000;
         return Integer.toString(year);
     }
 

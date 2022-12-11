@@ -11,9 +11,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardPage {
-
-    private static SelenideElement payButton = $x("//*[.=\"Купить\"]");
-    private static SelenideElement payInCreditButton = $x("//*[.=\"Купить в кредит\"]");
     private static SelenideElement numberOfCard = $x("//*[@placeholder='0000 0000 0000 0000']");
     private static SelenideElement month = $x("//*[@placeholder='08']");
     private static SelenideElement year = $x("//*[@placeholder='22']");
@@ -36,7 +33,7 @@ public class CardPage {
     private static SelenideElement emptyCVCField = $(byText("Неверный формат"));
 
 
-    public static void fullField(DataHelp.card info) {
+    public void fullField(DataHelp.card info) {
         numberOfCard.setValue(info.getCardNumber());
         month.setValue(info.getMonth());
         year.setValue(info.getYear());
@@ -45,39 +42,31 @@ public class CardPage {
         continueButton.click();
     }
 
-    public static void payToButton() {
-        payButton.click();
-    }
-
-    public static void payInCreditToButton() {
-        payInCreditButton.click();
-    }
-
-    public static void successfulWay() {
+    public void successfulWay() {
         sucNote.shouldBe(Condition.visible, Duration.ofSeconds(20));
     }
 
-    public static void unSuccessfulWay() {
+    public void unSuccessfulWay() {
         errNote.shouldBe(Condition.visible, Duration.ofSeconds(20));
     }
 
-    public static void cardNumberError() {
+    public void cardNumberError() {
         numberOfCard.shouldBe(Condition.visible);
     }
 
-    public static void monthError() {
+    public void monthError() {
         month.shouldBe(Condition.visible);
     }
 
-    public static void yearError() {
+    public void yearError() {
         year.shouldBe(Condition.visible);
     }
 
-    public static void ownerError() {
+    public void ownerError() {
         owner.shouldBe(Condition.visible);
     }
 
-    public static void cvcError() {
+    public void cvcError() {
         cvc.shouldBe(Condition.visible);
     }
 

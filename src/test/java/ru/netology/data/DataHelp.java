@@ -2,7 +2,6 @@ package ru.netology.data;
 
 import com.github.javafaker.Faker;
 import lombok.Value;
-
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
@@ -16,7 +15,7 @@ public class DataHelp {
     private static Faker faker = new Faker(new Locale("en"));
 
     @Value
-    public static class card {
+    public static class Card {
         private String cardNumber;
         private String month;
         private String year;
@@ -27,7 +26,6 @@ public class DataHelp {
     public static String cardNumberApproved() {
         return "4444444444444441";
     }
-
     public static String cardNumberDeclined() {
         return "4444444444444442";
     }
@@ -53,15 +51,12 @@ public class DataHelp {
     }
 
     public static String thirteenthMonth() {
-        LocalDate currentMonth = LocalDate.now();
-        int between = (12 - currentMonth.getMonthValue()) + 1;
-        int month = currentMonth.getMonthValue() + between;
+        int month = 13;
         return String.format("%02d", month);
     }
 
     public static String zeroMonth() {
-        LocalDate currentMonth = LocalDate.now();
-        int month = currentMonth.getMonthValue() - currentMonth.getMonthValue();
+        int month =0;
         return String.format("%02d", month);
     }
 
@@ -120,87 +115,88 @@ public class DataHelp {
         return Long.toString(faker.number().randomNumber(16, true));
     }
 
-    public static card randomField() {
-        return new card(randomCardNumber(), randomMonth(), currentYear(), owner(), CVC());
+    public static Card randomField() {
+        return new Card(randomCardNumber(), randomMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card approvedField() {
-        return new card(cardNumberApproved(), currentMonth(), currentYear(), owner(), CVC());
+    public static Card approvedField() {
+        return new Card(cardNumberApproved(), currentMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card declinedField() {
-        return new card(cardNumberDeclined(), currentMonth(), currentYear(), owner(), CVC());
+    public static Card declinedField() {
+        return new Card(cardNumberDeclined(), currentMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndNextMonth() {
-        return new card(cardNumberApproved(), nextMonth(), currentYear(), owner(), CVC());
+    public static Card approvedFieldAndNextMonth() {
+        return new Card(cardNumberApproved(), nextMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndPastMonth() {
-        return new card(cardNumberApproved(), pastMonth(), currentYear(), owner(), CVC());
+    public static Card approvedFieldAndPastMonth() {
+        return new Card(cardNumberApproved(), pastMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndNextYear() {
-        return new card(cardNumberApproved(), currentMonth(), nextYear(), owner(), CVC());
+    public static Card approvedFieldAndNextYear() {
+        return new Card(cardNumberApproved(), currentMonth(), nextYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndPastYear() {
-        return new card(cardNumberApproved(), currentMonth(), pastYear(), owner(), CVC());
+    public static Card approvedFieldAndPastYear() {
+        return new Card(cardNumberApproved(), currentMonth(), pastYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndWrongCvc() {
-        return new card(cardNumberApproved(), currentMonth(), currentYear(), owner(), falseCvc());
+    public static Card approvedFieldAndWrongCvc() {
+        return new Card(cardNumberApproved(), currentMonth(), currentYear(), owner(), falseCvc());
     }
 
-    public static card emptyCardField() {
+    public static Card emptyCardField() {
 
-        return new card("", currentMonth(), currentYear(), owner(), CVC());
+        return new Card("", currentMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card emptyMonthField() {
+    public static Card emptyMonthField() {
 
-        return new card(cardNumberApproved(), "", currentYear(), owner(), CVC());
+        return new Card(cardNumberApproved(), "", currentYear(), owner(), CVC());
     }
 
-    public static card emptyYearField() {
+    public static Card emptyYearField() {
 
-        return new card(cardNumberApproved(), currentMonth(), "", owner(), CVC());
+        return new Card(cardNumberApproved(), currentMonth(), "", owner(), CVC());
     }
 
-    public static card emptyOwnerField() {
-        return new card(cardNumberApproved(), currentMonth(), currentYear(), "", CVC());
+    public static Card emptyOwnerField() {
+        return new Card(cardNumberApproved(), currentMonth(), currentYear(), "", CVC());
     }
 
-    public static card emptyCvcField() {
-        return new card(cardNumberApproved(), currentMonth(), currentYear(), owner(), "");
+    public static Card emptyCvcField() {
+        return new Card(cardNumberApproved(), currentMonth(), currentYear(), owner(), "");
     }
 
-    public static card emptyFields() {
-        return new card("", "", "", "", "");
+    public static Card emptyFields() {
+        return new Card("", "", "", "", "");
     }
 
-    public static card approvedFieldAndZeroMonth() {
-        return new card(cardNumberApproved(), zeroMonth(), nextYear(), owner(), CVC());
+    public static Card approvedFieldAndZeroMonth() {
+        return new Card(cardNumberApproved(), zeroMonth(), nextYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndThirteenthMonth() {
-        return new card(cardNumberApproved(), thirteenthMonth(), currentYear(), owner(), CVC());
+    public static Card approvedFieldAndThirteenthMonth() {
+        return new Card(cardNumberApproved(), thirteenthMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndZeroCvc() {
-        return new card(cardNumberApproved(), currentMonth(), currentYear(), owner(), "000");
+    public static Card approvedFieldAndZeroCvc() {
+        return new Card(cardNumberApproved(), currentMonth(), currentYear(), owner(), "000");
     }
 
-    public static card shortCard() {
-        return new card("00000000", currentMonth(), currentYear(), owner(), CVC());
+    public static Card shortCard() {
+        return new Card("00000000", currentMonth(), currentYear(), owner(), CVC());
     }
 
-    public static card approvedFieldAndRussiaName() {
-        return new card(cardNumberApproved(), currentMonth(), currentYear(), "Екатерина Устинова", CVC());
+    public static Card approvedFieldAndRussiaName() {
+        return new Card(cardNumberApproved(), currentMonth(), currentYear(), "Екатерина Устинова", CVC());
     }
 
-    public static card approvedFieldAndMoreThanFiveYear() {
-        return new card(cardNumberApproved(), currentMonth(), moreThenFiveYear(), owner(), CVC());
+    public static Card approvedFieldAndMoreThanFiveYear() {
+        return new Card(cardNumberApproved(), currentMonth(), moreThenFiveYear(), owner(), CVC());
     }
+
 }
 

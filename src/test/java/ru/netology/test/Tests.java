@@ -8,8 +8,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelp;
 import ru.netology.data.SqlHelp;
-import ru.netology.model.MainPage;
 import ru.netology.page.CardPage;
+import ru.netology.page.MainPage;
+
 import static com.codeborne.selenide.Selenide.open;
 
 public class Tests {
@@ -25,9 +26,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithApprovedCardForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+
         var card = DataHelp.approvedField();
         var page = new CardPage();
         page.fullField(card);

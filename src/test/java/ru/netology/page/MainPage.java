@@ -10,13 +10,13 @@ public class MainPage {
     private SelenideElement payButton = $x("//span[text() = 'Купить']");
     private SelenideElement payInCreditButton = $x("//span[text() = 'Купить в кредит']");
 
-    public PaymentModel payToButton() {
+    public CardPage payToButton() {
         payButton.click();
-        return new PaymentModel();
+        return new CardPage();
     }
 
-    public CreditModel payInCreditToButton() {
+    public CreditPage payInCreditToButton() {
         payInCreditButton.click();
-        return new CreditModel();
+        return new CreditPage();
     }
 }

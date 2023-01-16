@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelp;
 import ru.netology.data.SqlHelp;
-import ru.netology.model.MainPage;
+import ru.netology.page.MainPage;
 import ru.netology.page.CardPage;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -25,9 +25,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithApprovedCardForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedField();
         var page = new CardPage();
         page.fullField(card);
@@ -37,9 +36,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithApprovedCardForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedField();
         var page = new CardPage();
         page.fullField(card);
@@ -49,9 +47,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithDeclinedCardForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.declinedField();
         var page = new CardPage();
         page.fullField(card);
@@ -61,9 +58,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithDeclinedFieldForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.declinedField();
         var page = new CardPage();
         page.fullField(card);
@@ -73,9 +69,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithNextMonthForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndNextMonth();
         var page = new CardPage();
         page.fullField(card);
@@ -84,9 +79,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithNextMonthForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndNextMonth();
         var page = new CardPage();
         page.fullField(card);
@@ -95,9 +89,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithPastMonthForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndPastMonth();
         var page = new CardPage();
         page.fullField(card);
@@ -106,9 +99,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithPastMonthForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndPastMonth();
         var page = new CardPage();
         page.fullField(card);
@@ -117,9 +109,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithNextYearForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndNextYear();
         var page = new CardPage();
         page.fullField(card);
@@ -128,9 +119,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithNextYearForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndNextYear();
         var page = new CardPage();
         page.fullField(card);
@@ -139,9 +129,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithPastYearForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndPastYear();
         var page = new CardPage();
         page.fullField(card);
@@ -150,9 +139,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithPastYearForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndPastYear();
         var page = new CardPage();
         page.fullField(card);
@@ -161,9 +149,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithWrongCvcForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndWrongCvc();
         var page = new CardPage();
         page.fullField(card);
@@ -172,9 +159,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithWrongCvcForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndWrongCvc();
         var page = new CardPage();
         page.fullField(card);
@@ -183,9 +169,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithZeroMonthForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndZeroMonth();
         var page = new CardPage();
         page.fullField(card);
@@ -194,9 +179,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithZeroMonthForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndZeroMonth();
         var page = new CardPage();
         page.fullField(card);
@@ -205,9 +189,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithZeroCvcForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndZeroCvc();
         var page = new CardPage();
         page.fullField(card);
@@ -216,9 +199,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithZeroCvcForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndZeroCvc();
         var page = new CardPage();
         page.fullField(card);
@@ -227,9 +209,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithShortCardForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.shortCard();
         var page = new CardPage();
         page.fullField(card);
@@ -238,9 +219,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithShortCardForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.shortCard();
         var page = new CardPage();
         page.fullField(card);
@@ -249,9 +229,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithRussiaNameForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndRussiaName();
         var page = new CardPage();
         page.fullField(card);
@@ -260,9 +239,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithRussiaNameForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndRussiaName();
         var page = new CardPage();
         page.fullField(card);
@@ -272,9 +250,8 @@ public class Tests {
 //пустые значения
     @Test
     public void shouldFillFormWithEmptyCardForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyCardField();
         var page = new CardPage();
         page.fullField(card);
@@ -283,9 +260,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyMonthForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyMonthField();
         var page = new CardPage();
         page.fullField(card);
@@ -294,9 +270,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyYearForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyYearField();
         var page = new CardPage();
         page.fullField(card);
@@ -305,9 +280,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyOwnerForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyOwnerField();
         var page = new CardPage();
         page.fullField(card);
@@ -316,9 +290,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyCvcForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyCvcField();
         var page = new CardPage();
         page.fullField(card);
@@ -327,9 +300,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyFieldsForPayment() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyFields();
         var page = new CardPage();
         page.fullField(card);
@@ -338,9 +310,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyCardForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyCardField();
         var page = new CardPage();
         page.fullField(card);
@@ -349,9 +320,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyMonthForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyMonthField();
         var page = new CardPage();
         page.fullField(card);
@@ -360,9 +330,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyYearForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyYearField();
         var page = new CardPage();
         page.fullField(card);
@@ -371,9 +340,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyOwnerForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyOwnerField();
         var page = new CardPage();
         page.fullField(card);
@@ -382,9 +350,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyCvcForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyCvcField();
         var page = new CardPage();
         page.fullField(card);
@@ -393,9 +360,8 @@ public class Tests {
 
     @Test
     public void shouldFillFormWithEmptyFieldsForCredit() {
-        var url = open("http://localhost:8080", CardPage.class);
-        var model = new MainPage();
-        model.payInCreditToButton();
+        var mainPage = open("http://localhost:8080", MainPage.class);
+        var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyFields();
         var page = new CardPage();
         page.fullField(card);

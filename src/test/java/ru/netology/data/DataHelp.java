@@ -55,8 +55,7 @@ public class DataHelp {
     }
 
     public static String zeroMonth() {
-        int month =0;
-        return String.format("%02d", month);
+        return "00";
     }
 
     public static String nextMonth() {

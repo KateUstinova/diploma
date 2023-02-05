@@ -28,9 +28,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.successfulWay();
+        cardPage.fullField(card);
+        cardPage.successfulWay();
         Assertions.assertEquals("APPROVED", SqlHelp.getPaymentApprovedStatus());
     }
 
@@ -39,9 +38,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.successfulWay();
+        creditPage.fullField(card);
+        creditPage.successfulWay();
         Assertions.assertEquals("APPROVED", SqlHelp.getCreditApprovedStatus());
     }
 
@@ -50,9 +48,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.declinedField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.unSuccessfulWay();
+        cardPage.fullField(card);
+        cardPage.unSuccessfulWay();
         Assertions.assertEquals("DECLINED", SqlHelp.getPaymentDeclinedStatus());
     }
 
@@ -61,9 +58,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.declinedField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.unSuccessfulWay();
+        creditPage.fullField(card);
+        creditPage.unSuccessfulWay();
         Assertions.assertEquals("DECLINED", SqlHelp.getCreditDeclinedStatus());
     }
 
@@ -72,9 +68,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndNextMonth();
-        var page = new CardPage();
-        page.fullField(card);
-        page.successfulWay();
+        cardPage.fullField(card);
+        cardPage.successfulWay();
     }
 
     @Test
@@ -82,9 +77,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndNextMonth();
-        var page = new CardPage();
-        page.fullField(card);
-        page.successfulWay();
+        creditPage.fullField(card);
+        creditPage.successfulWay();
     }
 
     @Test
@@ -92,9 +86,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndPastMonth();
-        var page = new CardPage();
-        page.fullField(card);
-        page.monthError();
+        cardPage.fullField(card);
+        cardPage.monthError();
     }
 
     @Test
@@ -102,9 +95,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndPastMonth();
-        var page = new CardPage();
-        page.fullField(card);
-        page.monthError();
+        creditPage.fullField(card);
+        creditPage.monthError();
     }
 
     @Test
@@ -112,9 +104,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndNextYear();
-        var page = new CardPage();
-        page.fullField(card);
-        page.successfulWay();
+        cardPage.fullField(card);
+        cardPage.successfulWay();
     }
 
     @Test
@@ -122,9 +113,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndNextYear();
-        var page = new CardPage();
-        page.fullField(card);
-        page.successfulWay();
+        creditPage.fullField(card);
+        creditPage.successfulWay();
     }
 
     @Test
@@ -132,9 +122,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndPastYear();
-        var page = new CardPage();
-        page.fullField(card);
-        page.yearError();
+        cardPage.fullField(card);
+        cardPage.yearError();
     }
 
     @Test
@@ -142,9 +131,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndPastYear();
-        var page = new CardPage();
-        page.fullField(card);
-        page.yearError();
+        creditPage.fullField(card);
+        creditPage.yearError();
     }
 
     @Test
@@ -152,9 +140,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndWrongCvc();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cvcError();
+        cardPage.fullField(card);
+        cardPage.cvcError();
     }
 
     @Test
@@ -162,9 +149,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndWrongCvc();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cvcError();
+        creditPage.fullField(card);
+        creditPage.cvcError();
     }
 
     @Test
@@ -172,9 +158,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndZeroMonth();
-        var page = new CardPage();
-        page.fullField(card);
-        page.monthError();
+        cardPage.fullField(card);
+        cardPage.monthError();
     }
 
     @Test
@@ -182,9 +167,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndZeroMonth();
-        var page = new CardPage();
-        page.fullField(card);
-        page.monthError();
+        creditPage.fullField(card);
+        creditPage.monthError();
     }
 
     @Test
@@ -192,9 +176,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndZeroCvc();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cvcError();
+        cardPage.fullField(card);
+        cardPage.cvcError();
     }
 
     @Test
@@ -202,9 +185,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndZeroCvc();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cvcError();
+        creditPage.fullField(card);
+        creditPage.cvcError();
     }
 
     @Test
@@ -212,9 +194,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.shortCard();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cardNumberError();
+        cardPage.fullField(card);
+        cardPage.cardNumberError();
     }
 
     @Test
@@ -222,9 +203,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.shortCard();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cardNumberError();
+        creditPage.fullField(card);
+        creditPage.cardNumberError();
     }
 
     @Test
@@ -232,9 +212,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndRussiaName();
-        var page = new CardPage();
-        page.fullField(card);
-        page.ownerError();
+        cardPage.fullField(card);
+        cardPage.ownerError();
     }
 
     @Test
@@ -242,9 +221,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndRussiaName();
-        var page = new CardPage();
-        page.fullField(card);
-        page.ownerError();
+        creditPage.fullField(card);
+        creditPage.ownerError();
     }
 
 //пустые значения
@@ -253,9 +231,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyCardField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cardNumberError();
+        cardPage.fullField(card);
+        cardPage.cardNumberError();
     }
 
     @Test
@@ -263,9 +240,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyMonthField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.monthError();
+        cardPage.fullField(card);
+        cardPage.monthError();
     }
 
     @Test
@@ -273,9 +249,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyYearField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.yearError();
+        cardPage.fullField(card);
+        cardPage.yearError();
     }
 
     @Test
@@ -283,9 +258,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyOwnerField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.ownerError();
+        cardPage.fullField(card);
+        cardPage.ownerError();
     }
 
     @Test
@@ -293,9 +267,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyCvcField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cvcError();
+        cardPage.fullField(card);
+        cardPage.cvcError();
     }
 
     @Test
@@ -303,9 +276,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyFields();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cardNumberError();
+        cardPage.fullField(card);
+        cardPage.cardNumberError();
     }
 
     @Test
@@ -313,9 +285,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyCardField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cardNumberError();
+        creditPage.fullField(card);
+        creditPage.cardNumberError();
     }
 
     @Test
@@ -323,9 +294,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyMonthField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.monthError();
+        creditPage.fullField(card);
+        creditPage.monthError();
     }
 
     @Test
@@ -333,9 +303,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyYearField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.yearError();
+        creditPage.fullField(card);
+        creditPage.yearError();
     }
 
     @Test
@@ -343,9 +312,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyOwnerField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.ownerError();
+        creditPage.fullField(card);
+        creditPage.ownerError();
     }
 
     @Test
@@ -353,9 +321,8 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyCvcField();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cvcError();
+        creditPage.fullField(card);
+        creditPage.cvcError();
     }
 
     @Test
@@ -363,12 +330,11 @@ public class Tests {
         var mainPage = open("http://localhost:8080", MainPage.class);
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyFields();
-        var page = new CardPage();
-        page.fullField(card);
-        page.cardNumberError();
-        page.monthError();
-        page.yearError();
-        page.ownerError();
-        page.cvcError();
+        creditPage.fullField(card);
+        creditPage.cardNumberError();
+        creditPage.monthError();
+        creditPage.yearError();
+        creditPage.ownerError();
+        creditPage.cvcError();
     }
 }

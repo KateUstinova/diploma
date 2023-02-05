@@ -26,7 +26,7 @@ public class SqlHelp {
 
     @SneakyThrows
     public static String getPaymentApprovedStatus() {
-        var codeSQL = "SELECT * FROM payment_entity JOIN order_entity ON transaction_id = payment_id where status = 'APPROVED'";
+        var codeSQL = "SELECT * FROM payment_entity JOIN order_entity ON transaction_id = payment_id where status = 'APPROVED' ORDER BY payment_entity.created DESC LIMIT 1";
         try (Connection connection = getConnect()) {
             var result = runner.query(connection, codeSQL, new BeanHandler<>(PaymentModel.class));
             return result.getStatus();
@@ -38,7 +38,7 @@ public class SqlHelp {
 
     @SneakyThrows
     public static String getPaymentDeclinedStatus() {
-        var codeSQL = "SELECT * FROM payment_entity JOIN order_entity ON transaction_id = payment_id where status = 'DECLINED'";
+        var codeSQL = "SELECT * FROM payment_entity JOIN order_entity ON transaction_id = payment_id where status = 'DECLINED' ORDER BY payment_entity.created DESC LIMIT 1";
         try (Connection connection = getConnect()) {
             var result = runner.query(connection, codeSQL, new BeanHandler<>(PaymentModel.class));
             return result.getStatus();
@@ -50,7 +50,7 @@ public class SqlHelp {
 
     @SneakyThrows
     public static String getCreditApprovedStatus() {
-        var codeSQL = "SELECT * FROM credit_request_entity JOIN order_entity ON bank_id = credit_id where status = 'APPROVED'";
+        var codeSQL = "SELECT * FROM credit_request_entity JOIN order_entity ON bank_id = credit_id where status = 'APPROVED' ORDER BY credit_request_entity.created DESC LIMIT 1";
         try (Connection connection = getConnect()) {
             var result = runner.query(connection, codeSQL, new BeanHandler<>(CreditModel.class));
             return result.getStatus();
@@ -62,7 +62,7 @@ public class SqlHelp {
 
     @SneakyThrows
     public static String getCreditDeclinedStatus() {
-        var codeSQL = "SELECT * FROM credit_request_entity JOIN order_entity ON bank_id = credit_id where status = 'DECLINED'";
+        var codeSQL = "SELECT * FROM credit_request_entity JOIN order_entity ON bank_id = credit_id where status = 'DECLINED' ORDER BY credit_request_entity.created DESC LIMIT 1";
         try (Connection connection = getConnect()) {
             var result = runner.query(connection, codeSQL, new BeanHandler<>(CreditModel.class));
             return result.getStatus();

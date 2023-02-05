@@ -87,7 +87,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndPastMonth();
         cardPage.fullField(card);
-        cardPage.monthError();
+        cardPage.monthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -96,7 +96,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndPastMonth();
         creditPage.fullField(card);
-        creditPage.monthError();
+        creditPage.monthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -123,7 +123,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndPastYear();
         cardPage.fullField(card);
-        cardPage.yearError();
+        cardPage.yearError("Истёк срок действия карты");
     }
 
     @Test
@@ -132,7 +132,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndPastYear();
         creditPage.fullField(card);
-        creditPage.yearError();
+        creditPage.yearError("Истёк срок действия карты");
     }
 
     @Test
@@ -141,7 +141,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndWrongCvc();
         cardPage.fullField(card);
-        cardPage.cvcError();
+        cardPage.cvcError("Неверный формат");
     }
 
     @Test
@@ -150,7 +150,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndWrongCvc();
         creditPage.fullField(card);
-        creditPage.cvcError();
+        creditPage.cvcError("Неверный формат");
     }
 
     @Test
@@ -159,7 +159,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndZeroMonth();
         cardPage.fullField(card);
-        cardPage.monthError();
+        cardPage.monthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -168,7 +168,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndZeroMonth();
         creditPage.fullField(card);
-        creditPage.monthError();
+        creditPage.monthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -177,7 +177,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndZeroCvc();
         cardPage.fullField(card);
-        cardPage.cvcError();
+        cardPage.cvcError("Неверный формат");
     }
 
     @Test
@@ -186,7 +186,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndZeroCvc();
         creditPage.fullField(card);
-        creditPage.cvcError();
+        creditPage.cvcError("Неверный формат");
     }
 
     @Test
@@ -195,7 +195,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.shortCard();
         cardPage.fullField(card);
-        cardPage.cardNumberError();
+        cardPage.cardNumberError("Неверный формат");
     }
 
     @Test
@@ -204,7 +204,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.shortCard();
         creditPage.fullField(card);
-        creditPage.cardNumberError();
+        creditPage.cardNumberError("Неверный формат");
     }
 
     @Test
@@ -213,7 +213,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.approvedFieldAndRussiaName();
         cardPage.fullField(card);
-        cardPage.ownerError();
+        cardPage.ownerError("Неверный формат");
     }
 
     @Test
@@ -222,7 +222,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.approvedFieldAndRussiaName();
         creditPage.fullField(card);
-        creditPage.ownerError();
+        creditPage.ownerError("Неверный формат");
     }
 
 //пустые значения
@@ -232,7 +232,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyCardField();
         cardPage.fullField(card);
-        cardPage.cardNumberError();
+        cardPage.cardNumberError("Неверный формат");
     }
 
     @Test
@@ -241,7 +241,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyMonthField();
         cardPage.fullField(card);
-        cardPage.monthError();
+        cardPage.monthError("Неверный формат");
     }
 
     @Test
@@ -250,7 +250,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyYearField();
         cardPage.fullField(card);
-        cardPage.yearError();
+        cardPage.yearError("Неверный формат");
     }
 
     @Test
@@ -259,7 +259,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyOwnerField();
         cardPage.fullField(card);
-        cardPage.ownerError();
+        cardPage.ownerError("Неверный формат");
     }
 
     @Test
@@ -268,7 +268,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyCvcField();
         cardPage.fullField(card);
-        cardPage.cvcError();
+        cardPage.cvcError("Неверный формат");
     }
 
     @Test
@@ -277,7 +277,7 @@ public class Tests {
         var cardPage = mainPage.payToButton();
         var card = DataHelp.emptyFields();
         cardPage.fullField(card);
-        cardPage.cardNumberError();
+        cardPage.cardNumberError("Неверный формат");
     }
 
     @Test
@@ -286,7 +286,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyCardField();
         creditPage.fullField(card);
-        creditPage.cardNumberError();
+        creditPage.cardNumberError("Неверный формат");
     }
 
     @Test
@@ -295,7 +295,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyMonthField();
         creditPage.fullField(card);
-        creditPage.monthError();
+        creditPage.monthError("Неверный формат");
     }
 
     @Test
@@ -304,7 +304,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyYearField();
         creditPage.fullField(card);
-        creditPage.yearError();
+        creditPage.yearError("Неверный формат");
     }
 
     @Test
@@ -313,7 +313,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyOwnerField();
         creditPage.fullField(card);
-        creditPage.ownerError();
+        creditPage.ownerError("Поле обязательно для заполнения");
     }
 
     @Test
@@ -322,7 +322,7 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyCvcField();
         creditPage.fullField(card);
-        creditPage.cvcError();
+        creditPage.cvcError("Неверный формат");
     }
 
     @Test
@@ -331,10 +331,10 @@ public class Tests {
         var creditPage = mainPage.payInCreditToButton();
         var card = DataHelp.emptyFields();
         creditPage.fullField(card);
-        creditPage.cardNumberError();
-        creditPage.monthError();
-        creditPage.yearError();
-        creditPage.ownerError();
-        creditPage.cvcError();
+        creditPage.cardNumberError("Неверный формат");
+        creditPage.monthError("Неверный формат");
+        creditPage.yearError("Неверный формат");
+        creditPage.ownerError("Поле обязательно для заполнения");
+        creditPage.cvcError("Неверный формат");
     }
 }

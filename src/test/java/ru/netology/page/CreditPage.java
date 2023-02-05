@@ -23,15 +23,11 @@ public class CreditPage {
     private static SelenideElement sucNote = $(byText("Операция одобрена Банком."));
     private static SelenideElement errNote = $(byText("Ошибка! Банк отказал в проведении операции."));
 
-    private static SelenideElement emptyCardField = $(byText("Неверный формат"));
-
-    private static SelenideElement emptyMonthField = $(byText("Неверный формат"));
-
-    private static SelenideElement emptyYearField = $(byText("Неверный формат"));
-
-    private static SelenideElement emptyOwnerField = $(byText("Поле обязательно для заполнения"));
-
-    private static SelenideElement emptyCVCField = $(byText("Неверный формат"));
+    private SelenideElement cardNumberErrorText = $x("//*[text()='Номер карты']/following-sibling::span[2]");
+    private SelenideElement monthErrorText = $x("//*[text()='Месяц']/following-sibling::span[2]");
+    private SelenideElement yearErrorText = $x("//*[text()='Год']/following-sibling::span[2]");
+    private SelenideElement ownerErrorText = $x("//*[text()='Владелец']/following-sibling::span[2]");
+    private SelenideElement cvvErrorText = $x("//*[text()='CVC/CVV']/following-sibling::span[2]");
 
 
     public void fullField(DataHelp.Card info) {
@@ -51,24 +47,24 @@ public class CreditPage {
         errNote.shouldBe(Condition.visible, Duration.ofSeconds(20));
     }
 
-    public void cardNumberError() {
-        numberOfCard.shouldBe(Condition.visible);
+    public void cardNumberError(String errorText) {
+        cardNumberErrorText.shouldHave(Condition.text(errorText)).shouldBe(Condition.visible);
     }
 
-    public void monthError() {
-        month.shouldBe(Condition.visible);
+    public void monthError(String errorText) {
+        monthErrorText.shouldHave(Condition.text(errorText)).shouldBe(Condition.visible);
     }
 
-    public void yearError() {
-        year.shouldBe(Condition.visible);
+    public void yearError(String errorText) {
+        yearErrorText.shouldHave(Condition.text(errorText)).shouldBe(Condition.visible);
     }
 
-    public void ownerError() {
-        owner.shouldBe(Condition.visible);
+    public void ownerError(String errorText) {
+        ownerErrorText.shouldHave(Condition.text(errorText)).shouldBe(Condition.visible);
     }
 
-    public void cvcError() {
-        cvc.shouldBe(Condition.visible);
+    public void cvcError(String errorText) {
+        cvvErrorText.shouldHave(Condition.text(errorText)).shouldBe(Condition.visible);
     }
 
 }

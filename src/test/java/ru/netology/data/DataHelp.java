@@ -9,9 +9,6 @@ import java.util.Random;
 
 public class DataHelp {
 
-    private DataHelp() {
-    }
-
     private static Faker faker = new Faker(new Locale("en"));
 
     @Value
@@ -29,13 +26,6 @@ public class DataHelp {
     public static String cardNumberDeclined() {
         return "4444444444444442";
     }
-    public static String randomMonth() {
-        Random random = new Random();
-        int i = random.nextInt(10);
-        LocalDate dataMonth = LocalDate.now().plusMonths(i);
-        int month = dataMonth.getMonthValue();
-        return String.format("%02d", month);
-    }
 
     public static String currentMonth() {
         LocalDate currentMonth = LocalDate.now();
@@ -49,10 +39,6 @@ public class DataHelp {
         return String.format("%02d", month);
     }
 
-    public static String thirteenthMonth() {
-        int month = 13;
-        return String.format("%02d", month);
-    }
 
     public static String zeroMonth() {
         return "00";
@@ -64,13 +50,6 @@ public class DataHelp {
         return String.format("%02d", month);
     }
 
-    public static String randomYear() {
-        Random random = new Random();
-        int i = random.nextInt(10);
-        LocalDate dataYear = LocalDate.now().plusYears(i);
-        int year = dataYear.getYear() - 2000;
-        return Integer.toString(year);
-    }
 
     public static String currentYear() {
         LocalDate currentYear = LocalDate.now();
@@ -90,11 +69,6 @@ public class DataHelp {
         return Integer.toString(year);
     }
 
-    public static String moreThenFiveYear() {
-        LocalDate currentYear = LocalDate.now();
-        int year = currentYear.getYear() - 1994;
-        return Integer.toString(year);
-    }
 
     public static String owner() {
         return faker.name().fullName();
@@ -108,14 +82,6 @@ public class DataHelp {
         return faker.number().digits(2);
     }
 
-    public static String randomCardNumber() {
-
-        return Long.toString(faker.number().randomNumber(16, true));
-    }
-
-    public static Card randomField() {
-        return new Card(randomCardNumber(), randomMonth(), currentYear(), owner(), CVC());
-    }
 
     public static Card approvedField() {
         return new Card(cardNumberApproved(), currentMonth(), currentYear(), owner(), CVC());
